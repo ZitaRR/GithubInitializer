@@ -15,9 +15,10 @@ def init():
     print("Pushing files...")
     for dirpath, dirs, files in os.walk(directory):
         for file in files:
-            folder = Path(os.path.join(dirpath, file)).parent.name
+            fullpath = os.path.join(dirpath, file)
+            folder = Path(fullpath).parent.name
             path = "{0}/{1}".format(folder, file)
-            with open(file, 'r') as content:
+            with open(fullpath, 'r') as content:
                 repo.create_file(path, "Initial commit", content.read())
     print("Push finished.")
 
