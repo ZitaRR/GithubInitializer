@@ -5,8 +5,8 @@ from github import Github
 
 directory = sys.argv[1]
 reponame = os.path.basename(directory)
-username = sys.argv[2] #Your github username
-password = sys.argv[3] #Your github password
+username = "YOUR USERNAME" #Your github username
+password = "YOUR PASSWORD" #Your github password
 
 def init():
     user = Github(username, password).get_user()
