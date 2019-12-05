@@ -16,10 +16,11 @@ def init():
     for dirpath, dirs, files in os.walk(directory):
         for file in files:
             fullpath = os.path.join(dirpath, file)
+            relativePath = os.path.relpath(fullpath, directory)
+            relativePath = relativePath.replace('\\', '/')
             folder = Path(fullpath).parent.name
-            path = "{0}/{1}".format(folder, file)
             with open(fullpath, 'r') as content:
-                repo.create_file(path, "Initial commit", content.read())
+                repo.create_file(relativePath, "Initial commit", content.read())
     print("Push finished.")
 
 if __name__ == "__main__":
